@@ -1,0 +1,13 @@
+{
+  "mysql": "8.0.46-0ubuntu0.24.04.3",
+  "django": "5.2.18",
+  "python": "3.12.14",
+  "database": "festival_web",
+  "db_user": "festival_app@127.0.0.1",
+  "counts": {
+    "Edicion": 2,
+    "Categoria": 4,
+    "Votacion": 4,
+    "Opcion": 8
+  }
+}

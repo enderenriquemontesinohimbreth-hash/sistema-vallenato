@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<p><a href="{% url 'festival:categorias' categoria.edicion_id %}">Volver a categorías</a></p>
+<p class="eyebrow">Edición {{ categoria.edicion.anio }} · {{ categoria.nombre }}</p>
+<h1>Votaciones</h1>
+<div class="row g-3">
+{% for votacion in votaciones %}
+  <div class="col-md-6"><article class="card h-100"><div class="card-body">
+    <h2 class="h4">{{ votacion.titulo }}</h2><p>{{ votacion.descripcion }}</p>
+    <a class="btn btn-primary" href="{% url 'festival:detalle' categoria.edicion_id categoria.pk votacion.pk %}">Consultar {{ votacion.titulo }}</a>
+  </div></article></div>
+{% empty %}<p class="empty-state">Esta categoría todavía no tiene votaciones.</p>{% endfor %}
+</div>
+{% endblock %}

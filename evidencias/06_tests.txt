@@ -1,0 +1,59 @@
+Found 24 test(s).
+Operations to perform:
+  Synchronize unmigrated apps: cuentas, messages, staticfiles
+  Apply all migrations: admin, auth, contenttypes, festival, sessions
+Synchronizing apps without migrations:
+  Creating tables...
+    Running deferred SQL...
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying auth.0012_alter_user_first_name_max_length... OK
+  Applying festival.0001_initial... OK
+  Applying sessions.0001_initial... OK
+System check identified no issues (0 silenced).
+Creating test database for alias 'default' ('test_festival_web')...
+test_16_registro_valido_sin_privilegios (cuentas.tests.CuentaTests.test_16_registro_valido_sin_privilegios) ... ok
+test_17_registro_duplicado (cuentas.tests.CuentaTests.test_17_registro_duplicado) ... ok
+test_18_registro_invalido (cuentas.tests.CuentaTests.test_18_registro_invalido) ... ok
+test_19_login_valido_invalido (cuentas.tests.CuentaTests.test_19_login_valido_invalido) ... ok
+test_20_logout_post_y_no_get (cuentas.tests.CuentaTests.test_20_logout_post_y_no_get) ... ok
+test_21_csrf_exigido (cuentas.tests.CuentaTests.test_21_csrf_exigido) ... ok
+test_22_admin_no_disponible_para_participante (cuentas.tests.CuentaTests.test_22_admin_no_disponible_para_participante) ... ok
+test_23_next_externo_no_redirige (cuentas.tests.CuentaTests.test_23_next_externo_no_redirige) ... ok
+test_24_next_local_admitido (cuentas.tests.CuentaTests.test_24_next_local_admitido) ... ok
+test_01_motor_mysql_real (festival.tests.CatalogoTests.test_01_motor_mysql_real) ... ok
+test_02_migracion_aplicada (festival.tests.CatalogoTests.test_02_migracion_aplicada) ... ok
+test_03_relaciones_persistidas (festival.tests.CatalogoTests.test_03_relaciones_persistidas) ... ok
+test_04_nombre_reutilizable_otra_edicion (festival.tests.CatalogoTests.test_04_nombre_reutilizable_otra_edicion) ... ok
+test_05_restriccion_duplicado_categoria (festival.tests.CatalogoTests.test_05_restriccion_duplicado_categoria) ... ok
+test_06_restriccion_duplicado_opcion (festival.tests.CatalogoTests.test_06_restriccion_duplicado_opcion) ... ok
+test_07_proteccion_eliminacion (festival.tests.CatalogoTests.test_07_proteccion_eliminacion) ... ok
+test_08_validacion_anio_y_nombre (festival.tests.CatalogoTests.test_08_validacion_anio_y_nombre) ... ok
+test_09_separacion_categorias (festival.tests.CatalogoTests.test_09_separacion_categorias) ... ok
+test_10_separacion_opciones (festival.tests.CatalogoTests.test_10_separacion_opciones) ... ok
+test_11_ruta_incoherente (festival.tests.CatalogoTests.test_11_ruta_incoherente) ... ok
+test_12_inexistente (festival.tests.CatalogoTests.test_12_inexistente) ... ok
+test_13_vacios (festival.tests.CatalogoTests.test_13_vacios) ... ok
+test_14_demo_idempotente (festival.tests.CatalogoTests.test_14_demo_idempotente) ... ok
+test_15_admin_crear_editar_ver_publico (festival.tests.CatalogoTests.test_15_admin_crear_editar_ver_publico) ... ok
+
+----------------------------------------------------------------------
+Ran 24 tests in 1.685s
+
+OK
+Destroying test database for alias 'default' ('test_festival_web')...

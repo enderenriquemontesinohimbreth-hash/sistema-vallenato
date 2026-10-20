@@ -1,0 +1,42 @@
+{% load static %}
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Festival de la Leyenda Vallenata{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'vendor/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/app.css' %}">
+</head>
+<body>
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+<header class="site-header">
+  <nav class="container nav-shell" aria-label="Navegación principal">
+    <a class="brand" href="{% url 'festival:inicio' %}">Festival de la Leyenda Vallenata</a>
+    <div class="nav-links">
+      <a href="{% url 'festival:ediciones' %}">Ediciones</a>
+      {% if user.is_authenticated %}
+        <span>Hola, {{ user.username }}</span>
+        {% if user.is_staff %}<a href="{% url 'admin:index' %}">Administración</a>{% endif %}
+        <form method="post" action="{% url 'logout' %}">
+          {% csrf_token %}<button class="btn btn-outline-light" type="submit">Cerrar sesión</button>
+        </form>
+      {% else %}
+        <a href="{% url 'login' %}">Ingresar</a>
+        <a class="btn btn-light" href="{% url 'registro' %}">Crear cuenta</a>
+      {% endif %}
+    </div>
+  </nav>
+</header>
+<div class="demo-note">Datos de prueba · Sin registro de votos</div>
+<main id="contenido" class="container py-4" tabindex="-1">
+  {% for message in messages %}<div class="alert alert-info" role="status">{{ message }}</div>{% endfor %}
+  {% block content %}{% endblock %}
+</main>
+<footer class="container py-4 border-top">
+  Proyecto académico · Festival de la Leyenda Vallenata 2027.<br>
+  Propuesta independiente. Sin identidad gráfica institucional.
+</footer>
+<script src="{% static 'js/app.js' %}" defer></script>
+</body>
+</html>

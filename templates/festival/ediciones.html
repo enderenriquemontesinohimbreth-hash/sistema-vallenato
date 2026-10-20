@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block title %}Ediciones | Festival{% endblock %}
+{% block content %}
+<p><a href="{% url 'festival:inicio' %}">Volver al inicio</a></p>
+<h1>Ediciones</h1>
+<p>Elige una edición para consultar sus categorías.</p>
+{% include 'festival/_ediciones.html' %}
+{% endblock %}

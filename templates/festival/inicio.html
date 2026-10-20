@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="hero">
+  <h1>Explora el catálogo del Festival</h1>
+  <p>Consulta ediciones, categorías, votaciones y sus opciones de ejemplo.</p>
+  <a class="btn btn-primary" href="{% url 'festival:ediciones' %}">Explorar ediciones</a>
+</section>
+<h2>Ediciones de ejemplo</h2>
+{% include 'festival/_ediciones.html' %}
+{% endblock %}

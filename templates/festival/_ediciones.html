@@ -1,0 +1,9 @@
+<div class="row g-3">
+{% for edicion in ediciones %}
+  <div class="col-md-6 col-lg-4"><article class="card h-100"><div class="card-body">
+    <p class="eyebrow">{{ edicion.anio }}</p><h3 class="h4">{{ edicion.nombre }}</h3>
+    <p>{{ edicion.descripcion }}</p>
+    <a class="btn btn-outline-primary" href="{% url 'festival:categorias' edicion.pk %}">Ver categorías de {{ edicion.anio }}</a>
+  </div></article></div>
+{% empty %}<p class="empty-state">Aún no hay ediciones registradas.</p>{% endfor %}
+</div>

@@ -1,0 +1,1 @@
+Carga lista. Catálogo de ejemplo: 2 ediciones, 4 categorías, 4 votaciones y 8 opciones en una base vacía.

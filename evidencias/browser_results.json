@@ -1,0 +1,42 @@
+[
+  {
+    "id": "B01",
+    "prueba": "Siete vistas públicas",
+    "resultado": "Aprobada; HTTP 200 y capturas reales"
+  },
+  {
+    "id": "B02",
+    "prueba": "Validación de campos vacíos en navegador",
+    "resultado": "Aprobada; envío impedido por HTML"
+  },
+  {
+    "id": "B03",
+    "prueba": "Registro, login inválido y válido, cierre real",
+    "resultado": "Aprobada; navegación y sesión verificadas"
+  },
+  {
+    "id": "B04",
+    "prueba": "Crear y modificar opción en Admin; consultar públicamente",
+    "resultado": "Aprobada; dato persistido y visible en HTML"
+  },
+  {
+    "id": "B05",
+    "prueba": "Estado vacío y 404",
+    "resultado": "Aprobada; mensaje y código de respuesta verificados"
+  },
+  {
+    "id": "B06",
+    "prueba": "Teclado y salto al contenido",
+    "resultado": "Aprobada; foco trasladado al contenido principal. Revisión básica, no auditoría WCAG"
+  },
+  {
+    "id": "B07",
+    "prueba": "Etiquetas asociadas en registro",
+    "resultado": "Aprobada; inputs visibles asociados a label"
+  },
+  {
+    "id": "B08",
+    "prueba": "Anchos 360, 768 y 1280 px en inicio, detalle y registro",
+    "resultado": "Aprobada; sin desbordamiento horizontal en nueve combinaciones"
+  }
+]
