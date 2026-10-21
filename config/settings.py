@@ -92,3 +92,13 @@ SESSION_COOKIE_HTTPONLY = True
 SESSION_COOKIE_SAMESITE = "Lax"
 CSRF_COOKIE_SAMESITE = "Lax"
 # Configuración local académica. HTTPS y despliegue requieren otra revisión.
+# Configuración HTTPS para Azure App Service.
+if os.getenv("WEBSITE_HOSTNAME"):
+    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
+    CSRF_TRUSTED_ORIGINS = [
+        "https://vallenato-ender-2027-gfgdgzewbyhuhedj.canadacentral-01.azurewebsites.net",
+    ]
+
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
