@@ -164,3 +164,16 @@ Fuentes oficiales consultadas el 19/10/2026:
 - https://pypi.org/project/mysqlclient/
 - https://pypi.org/project/python-dotenv/
 - https://getbootstrap.com/docs/5.3/getting-started/download/
+
+
+# Extensión Entrega 3 (versión de trabajo)
+
+Lea [instrucciones y estado real](docs/ENTREGA_3_LEEME_PRIMERO.md) antes de actualizar.
+Nuevas rutas: `/api/categorias/`, `/mi-participacion/` y selección/confirmación desde cada categoría.
+Un voto por usuario/categoría/edición; la edición se deriva de la categoría. Categorías cerradas por defecto: habilitarlas en Admin.
+Datos de ejemplo: `python manage.py cargar_demo_e3` (solo desarrollo).
+Pruebas nuevas en `festival/tests_votos.py`, matriz en [PRUEBAS_ENTREGA_3.md](docs/PRUEBAS_ENTREGA_3.md).
+Las pruebas antiguas y capturas de evidencias pertenecen a E2, no certifican esta actualización.
+Fotografía de Jdvillalobos, CC BY 3.0: [créditos](static/img/CREDITOS.md).
+Modelo/API: [MODELO_Y_API_E3.md](docs/MODELO_Y_API_E3.md). Borrador de informe/video: [INFORME_Y_VIDEO_E3.md](docs/INFORME_Y_VIDEO_E3.md).
+Autores: [Nombre del integrante 1], [Nombre del integrante 2], [Nombre del integrante 3], [Nombre del integrante 4], [Nombre del integrante 5]. Aportes reales pendientes de documentar.

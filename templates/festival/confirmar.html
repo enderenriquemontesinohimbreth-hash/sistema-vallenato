@@ -1,0 +1,8 @@
+{% extends 'base.html' %}{% block page_class %}page-confirmacion{% endblock %}{% block content %}
+<div class="form-panel"><p class="eyebrow">Revisa tu elección</p><h1>Confirma tu voto</h1>
+<dl><dt>Edición</dt><dd>{{ categoria.edicion }}</dd><dt>Categoría</dt><dd>{{ categoria.nombre }}</dd><dt>Subevento</dt><dd>{{ opcion.votacion.titulo }}</dd><dt>Opción elegida</dt><dd><strong>{{ opcion.nombre }}</strong></dd></dl>
+<p>Una vez registrado, no podrás emitir otro voto en esta categoría y edición.</p>
+<form method="post" action="{% url 'festival:confirmar' categoria.edicion_id categoria.pk %}">{% csrf_token %}
+<input type="hidden" name="opcion" value="{{ opcion.pk }}"><label class="confirmation-check">{{ form.confirmar }} {{ form.confirmar.label }}</label>
+<button class="btn btn-primary" type="submit">Confirmar y registrar voto</button></form>
+<a class="back-link" href="{% url 'festival:elegir' categoria.edicion_id categoria.pk %}">Regresar y cambiar la selección</a></div>{% endblock %}

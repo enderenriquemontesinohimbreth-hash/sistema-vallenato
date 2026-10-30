@@ -1,30 +1,16 @@
-:root { --ink:#19312d; --accent:#17654f; }
-body { color:var(--ink); background:#f7f9f7; font-size:1rem; }
-a { color:#12583f; text-underline-offset:.2em; }
-.site-header { background:#163d32; color:white; }
-.nav-shell { display:flex; justify-content:space-between; gap:1rem; padding:1rem; flex-wrap:wrap; }
-.brand { font-size:1.5rem; color:white; text-decoration:none; font-weight:700; }
-.brand span { display:block; font-size:.8rem; font-weight:400; }
-.nav-links { display:flex; gap:1rem; flex-wrap:wrap; align-items:center; }
-.nav-links>a { color:white; }
-.nav-links>.btn-light { color:#163d32; }
-.nav-links form { margin:0; }
-.demo-note { background:#eee6d2; padding:.65rem 1rem; text-align:center; color:#453a23; }
-.hero { padding:2rem; background:#e7f0e9; border-radius:1rem; margin-bottom:2rem; }
-h1 { font-size:clamp(1.9rem,4vw,2.8rem); margin-bottom:1rem; }
-h2 { margin:1rem 0; }
-.eyebrow { text-transform:uppercase; letter-spacing:.07em; font-size:.8rem; font-weight:700; }
-.card { border-color:#c7d8d0; border-radius:.8rem; }
-.card-body { padding:1.4rem; }
-.btn-primary { --bs-btn-bg:#17654f; --bs-btn-border-color:#17654f; --bs-btn-hover-bg:#104b3b; --bs-btn-hover-border-color:#104b3b; }
-.btn-outline-primary { --bs-btn-color:#17654f; --bs-btn-border-color:#17654f; --bs-btn-hover-bg:#17654f; --bs-btn-hover-border-color:#17654f; }
-.btn { min-height:44px; display:inline-flex; align-items:center; justify-content:center; white-space:normal; }
-.form-panel { max-width:36rem; margin:0 auto; padding:1.5rem; background:white; border:1px solid #c7d8d0; border-radius:1rem; }
-label { display:block; font-weight:600; margin-bottom:.4rem; }
-input:not([type=hidden]) { width:100%; min-height:44px; padding:.6rem; border:1px solid #6a7f76; border-radius:.35rem; }
-.errorlist { color:#a51b2b; }
-.empty-state { padding:1rem; border:1px dashed #6a7f76; margin:1rem 0; }
-:focus-visible { outline:3px solid #b36800; outline-offset:3px; }
-.skip-link { position:absolute; left:1rem; top:-100px; background:white; padding:.8rem; z-index:10; }
-.skip-link:focus { top:.5rem; }
-@media (max-width:575px) { .hero { padding:1.25rem; } .nav-links { gap:.7rem; } }
+:root{--ink:#202e28;--accent:#9e3b23;--gold:#e5b86c;--paper:#fffaf0}*{box-sizing:border-box}
+body{margin:0;color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.65;background:#192c26 url('../img/festival-vallenato-2007.jpg') center/cover fixed}
+body:before{content:"";position:fixed;inset:0;background:linear-gradient(100deg,rgba(13,35,28,.92),rgba(13,35,28,.42));z-index:-1}
+body.page-ediciones{background-position:35% 50%}body.page-categorias{background-position:60% 35%}body.page-votaciones{background-position:70% 55%}body.page-opciones{background-position:80% 45%}
+a{color:#87331f;text-underline-offset:.2em}.site-header{background:#152d26ef;color:white;border-bottom:1px solid #ffffff25}
+.nav-shell{display:flex;justify-content:space-between;gap:1.5rem;padding:1.3rem .8rem;align-items:center;flex-wrap:wrap}
+.brand{color:#fff8e8;font-size:1.5rem;letter-spacing:.12em;font-weight:800;text-decoration:none;line-height:1.3}.brand small{display:block;font-size:.65rem;letter-spacing:.12em;font-weight:500;margin-top:.4rem}.brand-symbol{color:var(--gold);font-size:2rem}
+.nav-links{display:flex;gap:1.2rem;flex-wrap:wrap;align-items:center}.nav-links>a{color:#fff8e8}.nav-links form{margin:0}
+.nav-links>.btn-light{color:#283a30;background:#f5ddaf}.edition-label{color:#ffe8bc;letter-spacing:.18em;font-size:.72rem;padding:2rem .8rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.main-panel{background:var(--paper);padding:2rem;border-radius:4px;min-height:45vh;box-shadow:0 20px 50px #0003}
+.page-inicio .main-panel{background:transparent;box-shadow:none;padding:0 .8rem}.hero{color:#fff8e8;padding:1.5rem 0 3rem;max-width:48rem}.hero h1{font-family:Georgia,serif;font-size:clamp(3rem,7vw,5.6rem);line-height:1.05;letter-spacing:-.04em}.hero-copy{font-size:1.15rem;max-width:35rem;margin:1.5rem 0}.hero .eyebrow{color:#ffdb9f}
+h1,h2,h3{line-height:1.18}h1{font-family:Georgia,serif;font-size:clamp(2rem,5vw,3.4rem);margin:.5rem 0 1.4rem}h2{margin:1rem 0}.eyebrow{text-transform:uppercase;letter-spacing:.13em;font-size:.73rem;font-weight:700;color:#805128}
+.section-heading{color:white;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:1rem}.section-heading span{color:#e4cda6;font-size:.85rem}
+.card{border:1px solid #ded3bf;border-radius:4px;background:#fffcf6;border-top:3px solid #bd6838}.card-body{padding:1.6rem}.card .h4{font-family:Georgia,serif;font-size:1.6rem}.btn{min-height:44px;padding:.65rem 1.1rem;display:inline-flex;gap:.8rem;align-items:center;justify-content:center;white-space:normal;border-radius:3px;font-weight:600}.btn-primary{--bs-btn-bg:#9e3b23;--bs-btn-border-color:#9e3b23;--bs-btn-hover-bg:#752b19;--bs-btn-hover-border-color:#752b19}.btn-outline-primary{--bs-btn-color:#87331f;--bs-btn-border-color:#87331f;--bs-btn-hover-bg:#87331f;--bs-btn-hover-border-color:#87331f}
+.rule-note{border-left:3px solid #b56f30;padding:.6rem 1rem;background:#f5ead6}.form-panel{max-width:38rem;margin:auto;background:#fffdf8;padding:1.5rem;border:1px solid #ded3bf;border-radius:4px}label{display:block;font-weight:600;margin-bottom:.4rem}input:not([type=hidden]):not([type=radio]):not([type=checkbox]){width:100%;min-height:44px;padding:.65rem;border:1px solid #7f8378;border-radius:3px}input[type=radio],input[type=checkbox]{accent-color:#87331f;width:1.2rem;height:1.2rem;margin-right:.6rem;vertical-align:middle}.choice{background:#fffdf8;border:1px solid #d3c6af;padding:.9rem;margin:.7rem 0;border-radius:3px}.choice label{margin:0;padding:.2rem;cursor:pointer}.choice:has(input:checked){border:2px solid #87331f;background:#fbecd7}.confirmation-check{margin:1rem 0}.back-link{display:inline-block;margin-top:1rem}.errorlist{color:#a01e23}.empty-state{padding:1.4rem;border:1px dashed #92846e;background:#fffaf0}.site-footer{color:#f6e5c4;font-size:.78rem;padding:2rem .8rem}.site-footer a{color:#ffe2ad}.site-footer p{margin:.3rem 0}:focus-visible{outline:3px solid #b85c00;outline-offset:4px}.skip-link{position:absolute;top:-100px;left:1rem;z-index:20;background:white;padding:.8rem}.skip-link:focus{top:.5rem}
+@media(max-width:575px){body{background-attachment:scroll}.main-panel{padding:1.2rem;margin:0 3%;width:94%}.page-inicio .main-panel{padding:.5rem}.nav-links{gap:.8rem;font-size:.88rem}.hero{padding:1rem .5rem 2rem}.edition-label{padding:1.3rem}.edition-label span{display:none}.form-panel{padding:1rem}.section-heading{padding:.5rem}.card-body{padding:1.2rem}}
