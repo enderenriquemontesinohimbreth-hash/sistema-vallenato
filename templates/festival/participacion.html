@@ -1,0 +1,7 @@
+{% extends 'base.html' %}{% block page_class %}page-participacion{% endblock %}{% block content %}
+<p class="eyebrow">Tu recorrido</p><h1>Mi participación</h1><p>Estas son las categorías en las que ya registraste tu voto.</p>
+<div class="row g-3">{% for voto in votos %}<div class="col-md-6"><article class="card h-100"><div class="card-body">
+<p class="eyebrow">Edición {{ voto.categoria.edicion.anio }} · Voto registrado</p><h2 class="h4">{{ voto.categoria.nombre }}</h2>
+<p>{{ voto.opcion.nombre }} · {{ voto.opcion.votacion.titulo }}</p><p>{{ voto.creado|date:"d/m/Y H:i" }}</p></div></article></div>
+{% empty %}<p class="empty-state">Todavía no has registrado votos. Explora las categorías habilitadas.</p>{% endfor %}</div>
+<a class="btn btn-primary mt-4" href="{% url 'festival:ediciones' %}">Explorar otras categorías</a>{% endblock %}

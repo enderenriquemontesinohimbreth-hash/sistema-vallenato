@@ -1,10 +1,4 @@
-{% extends 'base.html' %}
-{% block content %}
-<section class="hero">
-  <h1>Explora el catálogo del Festival</h1>
-  <p>Consulta ediciones, categorías, votaciones y sus opciones de ejemplo.</p>
-  <a class="btn btn-primary" href="{% url 'festival:ediciones' %}">Explorar ediciones</a>
-</section>
-<h2>Ediciones de ejemplo</h2>
-{% include 'festival/_ediciones.html' %}
-{% endblock %}
+{% extends 'base.html' %}{% block page_class %}page-inicio{% endblock %}{% block content %}
+<section class="hero"><p class="eyebrow">Cultura, encuentro y tradición</p><h1>El vallenato<br>se vive contigo.</h1><p class="hero-copy">Recorre las ediciones, descubre las categorías y participa en las votaciones de este proyecto académico.</p><a class="btn btn-primary" href="{% url 'festival:ediciones' %}">Explorar el catálogo <span aria-hidden="true">→</span></a></section>
+<div class="section-heading"><h2>Descubre las ediciones</h2><span>Un recorrido por nuestra música</span></div>
+{% include 'festival/_ediciones.html' %}{% endblock %}

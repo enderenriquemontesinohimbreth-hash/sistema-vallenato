@@ -60,7 +60,7 @@ DATABASES = {"default": {
 db_ssl_ca = os.getenv("DB_SSL_CA", "").strip()
 
 if db_ssl_ca:
-    DATABASES["default"]["OPTIONS"]["ssl"] = {"ca": db_ssl_ca}
+    DATABASES["default"]["OPTIONS"]["ssl"] = {"ca": str((BASE_DIR / db_ssl_ca).resolve())}
     DATABASES["default"]["OPTIONS"]["ssl_mode"] = "VERIFY_IDENTITY"
 AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},

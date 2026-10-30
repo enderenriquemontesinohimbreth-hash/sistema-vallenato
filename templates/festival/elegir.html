@@ -1,0 +1,10 @@
+{% extends 'base.html' %}{% block page_class %}page-opciones{% endblock %}{% block content %}
+<p><a href="{% url 'festival:votaciones' categoria.edicion_id categoria.pk %}">← Volver a votaciones</a></p>
+<p class="eyebrow">Edición {{ categoria.edicion.anio }}</p><h1>{{ categoria.nombre }}</h1>
+<p>Elige una sola opción entre todos los subeventos de esta categoría. Antes de guardar podrás confirmar tu elección.</p>
+{% if cerrada %}<p class="alert alert-warning">Esta categoría está cerrada.</p>
+{% elif form.fields.opcion.queryset.exists %}<form method="post" class="vote-form">{% csrf_token %}{{ form.non_field_errors }}{{ form.opcion.errors }}
+<fieldset><legend>Opciones disponibles</legend>{% for radio in form.opcion %}<div class="choice">{{ radio }}</div>{% endfor %}</fieldset>
+<button class="btn btn-primary mt-3" type="submit">Revisar mi elección →</button></form>
+{% else %}<p class="empty-state">Esta categoría todavía no tiene opciones.</p>{% endif %}
+{% endblock %}

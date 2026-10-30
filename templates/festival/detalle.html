@@ -1,9 +1,10 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %}{% block page_class %}page-opciones{% endblock %}
 {% block content %}
 <p><a href="{% url 'festival:votaciones' votacion.categoria.edicion_id votacion.categoria_id %}">Volver a votaciones</a></p>
 <p class="eyebrow">{{ votacion.categoria.edicion.anio }} · {{ votacion.categoria.nombre }}</p>
 <h1>{{ votacion.titulo }}</h1><p>{{ votacion.descripcion }}</p>
-<div class="alert alert-info">Solo consulta. El registro de votos pertenece a una entrega posterior.</div>
+<p class="rule-note">Una sola elección por categoría y edición, entre todos sus subeventos.</p>
+{% if votacion.categoria.habilitada %}<a class="btn btn-primary" href="{% url 'festival:elegir' votacion.categoria.edicion_id votacion.categoria_id %}">Elegir una opción de esta categoría</a>{% else %}<p class="alert alert-warning">Categoría cerrada para votar.</p>{% endif %}
 <h2>Opciones de ejemplo</h2>
 <div class="row g-3">
 {% for opcion in opciones %}

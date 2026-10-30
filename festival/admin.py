@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Categoria, Edicion, Opcion, Votacion
+from .models import Categoria, Edicion, Opcion, Votacion, Voto
 
 admin.site.site_header = "Festival | Administración académica"
 admin.site.site_title = "Catálogo del Festival"
@@ -13,7 +13,7 @@ class EdicionAdmin(admin.ModelAdmin):
 
 @admin.register(Categoria)
 class CategoriaAdmin(admin.ModelAdmin):
-    list_display = ("nombre", "edicion")
+    list_display = ("nombre", "edicion", "habilitada")
     list_filter = ("edicion",)
     search_fields = ("nombre", "edicion__nombre")
     list_select_related = ("edicion",)
@@ -31,3 +31,25 @@ class OpcionAdmin(admin.ModelAdmin):
     list_filter = ("votacion__categoria__edicion", "votacion")
     search_fields = ("nombre", "votacion__titulo")
     list_select_related = ("votacion__categoria__edicion",)
+
+
+@admin.register(Voto)
+class VotoAdmin(admin.ModelAdmin):
+    list_display = ("usuario", "edicion", "categoria", "opcion", "creado")
+    list_filter = ("categoria__edicion", "categoria")
+    search_fields = ("usuario__username", "opcion__nombre", "categoria__nombre")
+    list_select_related = ("usuario", "categoria__edicion", "opcion__votacion")
+    readonly_fields = ("usuario", "categoria", "opcion", "creado")
+
+    @admin.display(description="Edición")
+    def edicion(self, obj):
+        return obj.categoria.edicion
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_change_permission(self, request, obj=None):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False

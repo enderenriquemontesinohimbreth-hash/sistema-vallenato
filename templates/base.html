@@ -1,42 +1,20 @@
 {% load static %}
-<!doctype html>
-<html lang="es">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% block title %}Festival de la Leyenda Vallenata{% endblock %}</title>
-  <link rel="stylesheet" href="{% static 'vendor/bootstrap.min.css' %}">
-  <link rel="stylesheet" href="{% static 'css/app.css' %}">
-</head>
-<body>
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}Vallenato · Festival 2027{% endblock %}</title>
+<link rel="stylesheet" href="{% static 'vendor/bootstrap.min.css' %}"><link rel="stylesheet" href="{% static 'css/app.css' %}"></head>
+<body class="{% block page_class %}page-catalogo{% endblock %}">
 <a class="skip-link" href="#contenido">Saltar al contenido</a>
-<header class="site-header">
-  <nav class="container nav-shell" aria-label="Navegación principal">
-    <a class="brand" href="{% url 'festival:inicio' %}">Festival de la Leyenda Vallenata</a>
-    <div class="nav-links">
-      <a href="{% url 'festival:ediciones' %}">Ediciones</a>
-      {% if user.is_authenticated %}
-        <span>Hola, {{ user.username }}</span>
-        {% if user.is_staff %}<a href="{% url 'admin:index' %}">Administración</a>{% endif %}
-        <form method="post" action="{% url 'logout' %}">
-          {% csrf_token %}<button class="btn btn-outline-light" type="submit">Cerrar sesión</button>
-        </form>
-      {% else %}
-        <a href="{% url 'login' %}">Ingresar</a>
-        <a class="btn btn-light" href="{% url 'registro' %}">Crear cuenta</a>
-      {% endif %}
-    </div>
-  </nav>
-</header>
-<div class="demo-note">Datos de prueba · Sin registro de votos</div>
-<main id="contenido" class="container py-4" tabindex="-1">
-  {% for message in messages %}<div class="alert alert-info" role="status">{{ message }}</div>{% endfor %}
-  {% block content %}{% endblock %}
-</main>
-<footer class="container py-4 border-top">
-  Proyecto académico · Festival de la Leyenda Vallenata 2027.<br>
-  Propuesta independiente. Sin identidad gráfica institucional.
-</footer>
-<script src="{% static 'js/app.js' %}" defer></script>
-</body>
-</html>
+<header class="site-header"><nav class="container nav-shell" aria-label="Navegación principal">
+<a class="brand" href="{% url 'festival:inicio' %}"><span class="brand-symbol" aria-hidden="true">≋</span> VALLENATO <small>Festival de la Leyenda · 2027</small></a>
+<div class="nav-links"><a href="{% url 'festival:ediciones' %}">Catálogo</a>
+{% if user.is_authenticated %}<a href="{% url 'festival:participacion' %}">Mi participación</a>
+{% if user.is_staff %}<a href="{% url 'admin:index' %}">Administración</a>{% endif %}
+<form method="post" action="{% url 'logout' %}">{% csrf_token %}<button class="btn btn-outline-light" type="submit">Cerrar sesión</button></form>
+{% else %}<a href="{% url 'login' %}">Ingresar</a><a class="btn btn-light" href="{% url 'registro' %}">Crear cuenta</a>{% endif %}</div></nav></header>
+<div class="container edition-label">VALLEDUPAR, COLOMBIA <span>TRADICIÓN QUE NOS UNE</span></div>
+<main id="contenido" class="container main-panel" tabindex="-1">
+{% for message in messages %}<div class="alert alert-info" role="status">{{ message }}</div>{% endfor %}
+{% block content %}{% endblock %}</main>
+<footer class="container site-footer"><p>Proyecto académico independiente · Datos y opciones de demostración. Sin afiliación institucional con el Festival.</p>
+<p>Fotografía histórica: <a href="https://commons.wikimedia.org/wiki/File:Festival_vallenato.jpg">Festival vallenato (2007), Jdvillalobos</a> · <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>. Presentación con recorte y superposición de color. No representa la edición 2027.</p></footer>
+<script src="{% static 'js/app.js' %}" defer></script></body></html>
