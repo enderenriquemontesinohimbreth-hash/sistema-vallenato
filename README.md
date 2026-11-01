@@ -1,13 +1,12 @@
-# Sistema de votaciones del Festival 2027 — Entrega 2
+# Sistema de votaciones del Festival 2027 
 
 Aplicación académica Django MVT con MySQL. Permite consultar ediciones, categorías,
 votaciones y opciones, crear cuentas e iniciar/cerrar sesión. El catálogo se administra
 con Django Admin. No registra votos, resultados ni políticas de elegibilidad.
 
 ## Equipo
-[Integrante 1], [Integrante 2], [Integrante 3], [Integrante 4], [Integrante 5].
-Cinco integrantes autorizados por el docente, según información del solicitante.
-El equipo debe completar los nombres y demostrar su participación.
+[Heidy Tatiana Gonzales], [Santiago Hernández Valero], [Carlos Andrés Lopez], [Camilo Quintero], [Ender Enrique Montecino].
+Cinco integrantes autorizados por el docente
 
 ## Versiones
 Verificado en Python 3.12.14, Django 5.2.18, mysqlclient 2.2.7,
@@ -137,15 +136,6 @@ revise teclado, errores, estados vacíos y coherencia de navegación.
 - evidencias/: logs sanitizados, resultados y capturas de la verificación local.
 - docs/: guion y plan de cierre.
 
-## Estado y entrega
-
-Implementación y verificación local disponibles. No hay despliegue de producción.
-Repositorio: [Enlace real del repositorio]. Video: [Enlace real del video].
-Publicación y verificación de permisos pendientes a cargo del equipo.
-La entrega oficial es un único PDF con evidencias y enlaces clicables, hasta el
-26 de octubre de 2026. El Word es el original editable y debe completarse con
-nombres, enlaces y participación real antes de exportar la versión definitiva.
-No se adjunta la base de datos ni .env. Se reconstruyen con migraciones y cargar_demo.
 
 ## Recursos y fuentes
 
@@ -175,5 +165,4 @@ Datos de ejemplo: `python manage.py cargar_demo_e3` (solo desarrollo).
 Pruebas nuevas en `festival/tests_votos.py`, matriz en [PRUEBAS_ENTREGA_3.md](docs/PRUEBAS_ENTREGA_3.md).
 Las pruebas antiguas y capturas de evidencias pertenecen a E2, no certifican esta actualización.
 Fotografía de Jdvillalobos, CC BY 3.0: [créditos](static/img/CREDITOS.md).
-Modelo/API: [MODELO_Y_API_E3.md](docs/MODELO_Y_API_E3.md). Borrador de informe/video: [INFORME_Y_VIDEO_E3.md](docs/INFORME_Y_VIDEO_E3.md).
-Autores: [Nombre del integrante 1], [Nombre del integrante 2], [Nombre del integrante 3], [Nombre del integrante 4], [Nombre del integrante 5]. Aportes reales pendientes de documentar.
+Modelo/API: [MODELO_Y_API_E3.md](docs/MODELO_Y_API_E3.md). 
