@@ -1,44 +1,87 @@
 {
-  "fecha": "2026-10-30",
-  "archivos_nuevos_modificados": [
-    "README.md",
-    "config/settings.py",
-    "docs/ENTREGA_3_LEEME_PRIMERO.md",
-    "docs/INFORME_Y_VIDEO_E3.md",
-    "docs/MODELO_Y_API_E3.md",
-    "docs/PRUEBAS_ENTREGA_3.md",
-    "evidencias/LEEME_EVIDENCIAS_E2.md",
-    "festival/admin.py",
-    "festival/forms.py",
-    "festival/management/commands/cargar_demo_e3.py",
-    "festival/migrations/0002_categoria_habilitada_voto.py",
-    "festival/models.py",
-    "festival/services.py",
-    "festival/tests_votos.py",
-    "festival/urls.py",
-    "festival/views.py",
-    "static/css/app.css",
-    "static/img/CREDITOS.md",
-    "static/img/festival-vallenato-2007.jpg",
-    "templates/base.html",
-    "templates/festival/categorias.html",
-    "templates/festival/confirmar.html",
-    "templates/festival/detalle.html",
-    "templates/festival/ediciones.html",
-    "templates/festival/elegir.html",
-    "templates/festival/inicio.html",
-    "templates/festival/participacion.html",
-    "templates/festival/votaciones.html",
-    "tools/revisar_historial.py"
-  ],
-  "verificaciones": {
-    "django_check": "Sin incidencias, análisis sin MySQL con controlador auxiliar temporal",
-    "collectstatic": "133 archivos copiados, 397 procesados",
-    "plantillas": "compilación correcta",
-    "makemigrations_check": "Sin cambios; historial MySQL no comprobado",
-    "pruebas_mysql": "NO EJECUTADAS: servidor no disponible",
-    "revision_visual_navegador": "BLOQUEADA: descarga de navegador fallida"
+  "fecha_actualizacion_documentacion": "2026-11-01",
+  "fecha_verificaciones_reportadas": "2026-10-30",
+  "fuente": "Salida de terminal y comprobaciones manuales compartidas por el estudiante",
+  "local": {
+    "entorno": "Windows, Python 3.12, Django 5.2.18, MySQL local",
+    "migracion_0002": "Aplicada OK",
+    "suite": {
+      "total": 39,
+      "heredadas": 24,
+      "nuevas": 15,
+      "tiempo_segundos": 11.649,
+      "resultado": "OK",
+      "concurrencia_dos_post": "Aprobada"
+    },
+    "evidencia": "resultados_pruebas_e3.txt"
   },
-  "github_azure": "No modificados",
-  "historial_git": "No incluido en ZIP; revisión pendiente"
+  "azure": {
+    "migracion_0002": "Aplicada OK",
+    "despliegue": "Actualizado; usuario confirmó nueva presentación",
+    "comprobaciones_manuales_confirmadas": [
+      "registro de voto",
+      "rechazo de duplicado",
+      "otra categoría",
+      "participación",
+      "API GET"
+    ],
+    "suite_automatizada": "No ejecutada en Azure"
+  },
+  "repositorio": {
+    "visibilidad": "Público, acceso en incógnito confirmado por el usuario",
+    "revision_basica_historial": {
+      "commits": 4,
+      "objetos_examinados": 52,
+      "resultado": "Sin coincidencias en patrones básicos",
+      "limite": "No es una auditoría exhaustiva ni una revisión de imágenes"
+    }
+  },
+  "pendientes": [
+    "Contraste de votos con consulta SQL documentada",
+    "Incorporación de capturas",
+    "Video de máximo 8 minutos y enlace accesible",
+    "Marcas reales del video",
+    "PDF académico completo",
+    "Aportes reales de integrantes",
+    "Verificación final de enlaces",
+    "Revisión completa de accesibilidad y tamaños de pantalla"
+  ],
+  "no_verificado": [
+    "pruebas de carga",
+    "seguridad integral",
+    "disponibilidad garantizada"
+  ],
+  "preparacion_inicial_historica": {
+    "descripcion": "El código se generó originalmente sin servidor MySQL en el entorno de preparación; no confundir con la ejecución posterior local aprobada",
+    "archivos_iniciales": [
+      "README.md",
+      "config/settings.py",
+      "docs/ENTREGA_3_LEEME_PRIMERO.md",
+      "docs/MODELO_Y_API_E3.md",
+      "docs/PRUEBAS_ENTREGA_3.md",
+      "evidencias/LEEME_EVIDENCIAS_E2.md",
+      "festival/admin.py",
+      "festival/forms.py",
+      "festival/management/commands/cargar_demo_e3.py",
+      "festival/migrations/0002_categoria_habilitada_voto.py",
+      "festival/models.py",
+      "festival/services.py",
+      "festival/tests_votos.py",
+      "festival/urls.py",
+      "festival/views.py",
+      "static/css/app.css",
+      "static/img/CREDITOS.md",
+      "static/img/festival-vallenato-2007.jpg",
+      "templates/base.html",
+      "templates/festival/categorias.html",
+      "templates/festival/confirmar.html",
+      "templates/festival/detalle.html",
+      "templates/festival/ediciones.html",
+      "templates/festival/elegir.html",
+      "templates/festival/inicio.html",
+      "templates/festival/participacion.html",
+      "templates/festival/votaciones.html",
+      "tools/revisar_historial.py"
+    ]
+  }
 }

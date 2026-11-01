@@ -1,7 +1,9 @@
-# Entrega 3: primera versión de trabajo
+# Entrega 3: instrucciones y estado de verificación
 
 Esta copia parte del ZIP sistema-vallenato-main recibido el 30 de octubre de 2026.
-No fue publicada en GitHub ni Azure. No cambia la visibilidad de su repositorio.
+Posteriormente se publicó la rama entrega-3 y se integró la actualización en main.
+La aplicación de Azure fue actualizada y el usuario confirmó que el repositorio abre públicamente en incógnito.
+Estado de documentación actualizado el 01/11/2026 con las verificaciones reportadas el 30/10/2026.
 
 ## Qué se agregó
 
@@ -12,10 +14,10 @@ No fue publicada en GitHub ni Azure. No cambia la visibilidad de su repositorio.
 - GET /api/categorias/ (público, sin votos individuales ni datos de usuarios).
 - Fotografía histórica de fondo, adaptación visual y créditos.
 
-## Antes de actualizar (Windows)
+## Procedimiento para futuras actualizaciones en Windows
 
 1. Conserve su carpeta original, sus credenciales y la versión entregada en el Eje 2.
-2. Revise `git status` y cree una rama de trabajo: `git switch -c entrega-3`.
+2. Revise `git status`, sincronice main si el árbol está limpio y cree una rama nueva para el cambio. La rama entrega-3 ya se utilizó.
 3. Copie los archivos de `CAMBIOS_ENTREGA_3.zip` sobre la raíz que contiene manage.py. El paquete no contiene .env ni .venv.
 4. No cambie DB_HOST a Azure para las pruebas. Use una base LOCAL de desarrollo y una base temporal de pruebas.
 5. No ejecute `git push origin main` hasta comprobar esta versión: main activa el despliegue.
@@ -61,15 +63,21 @@ La política provisional impide modificar o borrar votos desde Admin. No permite
 
 ## Estado real
 
-El código fue escrito y las plantillas compiladas. Se generó la migración y Django check no reportó problemas usando un controlador auxiliar temporal en el entorno de revisión. No se cambió el controlador mysqlclient del proyecto entregado.
-No hubo un servidor MySQL disponible aquí: migraciones aplicadas, pruebas funcionales, integridad concurrente y regresión permanecen NO EJECUTADAS/BLOQUEADAS. La advertencia al generar migraciones indica que no pudo comprobarse el historial contra MySQL.
-Los resultados de 24 pruebas anteriores pertenecen a la Entrega 2, no validan la Entrega 3.
+- Migración festival.0002_categoria_habilitada_voto aplicada con OK en MySQL local y Azure.
+- Suite local: 39 pruebas aprobadas (24 heredadas y 15 nuevas), 11,649 segundos, resultado OK. Incluye la prueba de dos POST simultáneos y conexiones independientes.
+- Evidencia de la ejecución local: resultados_pruebas_e3.txt.
+- El usuario confirmó la nueva presentación y comprobaciones manuales en Azure: voto registrado, duplicado rechazado, participación en otra categoría e información de la API.
+- No se ejecutó la suite contra MySQL compartido de Azure. Los datos locales no se transfieren automáticamente a Azure.
+- La evidencia visual fue tomada por el equipo; falta incorporarla al informe final. La comparación directa de votos con SQL sigue pendiente de documentar.
+- Pendientes: revisión completa de tamaños de pantalla, teclado y contraste, video, marcas reales, aportes individuales y PDF final. La navegación manual no certifica toda la accesibilidad.
 
 ## Publicación del repositorio
 
-Su autorización para hacerlo público está registrada. El ZIP no incluye el historial Git ni permite modificar GitHub remotamente. La revisión básica no detectó .env real, tokens de GitHub ni claves privadas en los archivos de texto recibidos; no es una auditoría completa.
-Antes del cambio ejecute en su repositorio local `.\.venv\Scripts\python.exe tools/revisar_historial.py` y revise las capturas. El script revisa patrones básicos e imprime solo archivos y commits, no valores; no es una certificación de ausencia de secretos. No comparta el archivo .env ni el resultado de una búsqueda que muestre claves.
-Tras esa revisión: GitHub → sistema-vallenato → Settings → General → Danger Zone → Change repository visibility → Change to public; siga la confirmación. Verifique el enlace en incógnito.
-No se ha cambiado todavía la visibilidad. No necesita volver a autorizar el cambio; falta acceso y revisión del historial.
+El usuario ejecutó tools/revisar_historial.py: 4 commits y 52 objetos examinados, sin coincidencias en los patrones básicos. No es una auditoría exhaustiva de secretos ni un análisis del contenido de imágenes.
+El repositorio se cambió a público y el usuario confirmó la lectura sin sesión desde incógnito.
+No subir .env real, contraseñas, tokens ni claves privadas. Repetir la revisión antes de futuras publicaciones y comprobar las capturas.
 
-La comprobación visual en navegador quedó pendiente: el navegador de pruebas no pudo descargarse. La compilación HTML sí se realizó, pero no demuestra adaptación responsive ni contraste comprobado.
+## Alcance de los resultados
+
+Las primeras comprobaciones de preparación se hicieron sin MySQL en el entorno de generación del código. Ese estado histórico fue superado por la ejecución posterior en el computador del equipo. Las 39 pruebas aprobadas documentan ese entorno local; no se atribuyen al entorno inicial ni al despliegue de Azure.
+No se han verificado carga masiva, disponibilidad garantizada ni seguridad integral.

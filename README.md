@@ -2,7 +2,10 @@
 
 Aplicación académica Django MVT con MySQL. Permite consultar ediciones, categorías,
 votaciones y opciones, crear cuentas e iniciar/cerrar sesión. El catálogo se administra
-con Django Admin. No registra votos, resultados ni políticas de elegibilidad.
+con Django Admin. La Entrega 3 permite registrar votos, confirmar la selección,
+consultar la participación y consultar una API GET. La regla académica es un voto
+por usuario, categoría y edición, incluidos todos los subeventos de esa categoría.
+No incluye publicación definitiva de resultados ni una evaluación integral de elegibilidad.
 
 ## Equipo
 [Heidy Tatiana Gonzales], [Santiago Hernández Valero], [Carlos Andrés Lopez], [Camilo Quintero], [Ender Enrique Montecino].
@@ -12,7 +15,10 @@ Cinco integrantes autorizados por el docente
 Verificado en Python 3.12.14, Django 5.2.18, mysqlclient 2.2.7,
 python-dotenv 1.2.1 y MySQL 8.0.46 en Ubuntu 24.04. Bootstrap 5.3.8 se sirve localmente.
 Para Windows se propone Python 3.12 de 64 bits y MySQL Community Server 8.4 LTS.
-La instalación en Windows y MySQL 8.4 debe verificarse en los equipos del grupo.
+El 30/10/2026 se ejecutaron 39 pruebas aprobadas en Windows con Python 3.12,
+Django 5.2.18 y MySQL local. La instalación debe comprobarse por separado en
+cada equipo nuevo; las versiones históricas del párrafo anterior corresponden
+al entorno inicial de preparación de la Entrega 2.
 Django 5.2 admite Python 3.10–3.14 y MySQL >=8.0.11 según documentación oficial.
 Use versiones vigentes compatibles y repita las pruebas si cambia las fijadas.
 
@@ -110,7 +116,9 @@ anidados validan edición, categoría y votación en la consulta del servidor.
 La consulta del catálogo es pública; el registro crea usuarios sin permisos staff.
 El cierre de sesión es un formulario POST protegido con CSRF.
 Las relaciones usan PROTECT: no puede eliminar un padre con hijos existentes.
-La identidad, la frecuencia y la elegibilidad del futuro voto siguen pendientes.
+El voto exige autenticación y admite una sola elección por usuario y categoría
+de una edición. La elegibilidad ampliada y las políticas de una operación real
+requieren validación; no se implementa una renovación diaria del voto.
 
 ## Pruebas
 
@@ -119,7 +127,12 @@ python manage.py test --verbosity 2
 python manage.py makemigrations --check --dry-run
 ```
 
-Las 24 pruebas incluidas usan el backend MySQL y una base separada test_festival_web.
+La suite incluye 39 pruebas: 24 heredadas de la Entrega 2 y 15 nuevas. Todas
+se ejecutaron nuevamente en MySQL local con resultado OK en 11,649 segundos.
+La base temporal es test_festival_web; Django la crea y elimina automáticamente.
+Evidencia: [resultados_pruebas_e3.txt](resultados_pruebas_e3.txt).
+La prueba concurrente de dos solicitudes fue aprobada; no equivale a una prueba de carga.
+Las comprobaciones de Azure fueron manuales y no se ejecutó allí la suite automatizada.
 Una prueba rechaza explícitamente SQLite y MariaDB para evidenciar MySQL real.
 Use un servidor de desarrollo propio, no datos de producción. La cuenta requiere
 permisos sobre la base de pruebas; no necesita privilegios globales.
@@ -134,13 +147,16 @@ revise teclado, errores, estados vacíos y coherencia de navegación.
 - templates/: base, catálogo, autenticación y página 404.
 - static/: CSS y JavaScript propios, Bootstrap y licencia.
 - evidencias/: logs sanitizados, resultados y capturas de la verificación local.
-- docs/: guion y plan de cierre.
+- docs/: instrucciones, modelo y API, matriz de pruebas, estado de verificación y plan de cierre.
 
 
 ## Recursos y fuentes
 
 Bootstrap 5.3.8: copyright de sus autores, licencia MIT incluida en static/vendor.
-No se usan imágenes, logotipos ni identidad institucional.
+La interfaz utiliza la fotografía histórica Festival vallenato (2007), de Jdvillalobos,
+con licencia CC BY 3.0 y créditos en [static/img/CREDITOS.md](static/img/CREDITOS.md).
+El CSS aplica encuadre y superposición. La foto no representa la edición 2027.
+No se usan logotipos ni se atribuye respaldo institucional al proyecto.
 Código específico del proyecto: material académico; la licencia de publicación
 queda por decidir por el equipo antes de subirlo a un repositorio.
 Fuentes oficiales consultadas el 19/10/2026:
@@ -156,13 +172,24 @@ Fuentes oficiales consultadas el 19/10/2026:
 - https://getbootstrap.com/docs/5.3/getting-started/download/
 
 
-# Extensión Entrega 3 (versión de trabajo)
+## Entrega 3 implementada y verificada en el alcance académico
 
 Lea [instrucciones y estado real](docs/ENTREGA_3_LEEME_PRIMERO.md) antes de actualizar.
 Nuevas rutas: `/api/categorias/`, `/mi-participacion/` y selección/confirmación desde cada categoría.
 Un voto por usuario/categoría/edición; la edición se deriva de la categoría. Categorías cerradas por defecto: habilitarlas en Admin.
 Datos de ejemplo: `python manage.py cargar_demo_e3` (solo desarrollo).
 Pruebas nuevas en `festival/tests_votos.py`, matriz en [PRUEBAS_ENTREGA_3.md](docs/PRUEBAS_ENTREGA_3.md).
-Las pruebas antiguas y capturas de evidencias pertenecen a E2, no certifican esta actualización.
+Las capturas y registros originales de la carpeta evidencias corresponden a E2;
+la ejecución de las 39 pruebas de E3 está en resultados_pruebas_e3.txt.
+La migración 0002 fue aplicada en local y Azure. El usuario confirmó manualmente
+en Azure el voto, duplicado, otra categoría, participación y API GET.
 Fotografía de Jdvillalobos, CC BY 3.0: [créditos](static/img/CREDITOS.md).
 Modelo/API: [MODELO_Y_API_E3.md](docs/MODELO_Y_API_E3.md). 
+
+## Acceso público y materiales pendientes
+
+- [Aplicación de pruebas en Azure](https://vallenato-ender-2027-gfgdgzewbyhuhedj.canadacentral-01.azurewebsites.net/).
+- [API GET pública](https://vallenato-ender-2027-gfgdgzewbyhuhedj.canadacentral-01.azurewebsites.net/api/categorias/).
+- El equipo confirmó acceso al repositorio desde incógnito. Repetir la verificación antes del envío.
+- Quedan pendientes el video de máximo 8 minutos, las marcas reales, la comparación SQL documentada y el PDF completo con capturas y aportes reales.
+- No se ha documentado una auditoría integral de seguridad, una prueba de carga ni una revisión completa de accesibilidad.
