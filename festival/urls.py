@@ -1,7 +1,9 @@
 from django.urls import path
 from . import views
+from .resultados import resultados
 app_name = "festival"
 urlpatterns = [
+    path("resultados/", resultados, name="resultados"),
     path("api/categorias/", views.api_categorias, name="api_categorias"),
     path("mi-participacion/", views.participacion, name="participacion"),
     path("ediciones/<int:edicion_id>/categorias/<int:categoria_id>/elegir/", views.elegir, name="elegir"),
