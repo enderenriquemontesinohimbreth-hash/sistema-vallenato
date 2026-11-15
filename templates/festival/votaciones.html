@@ -2,7 +2,8 @@
 {% block content %}
 <p><a href="{% url 'festival:categorias' categoria.edicion_id %}">Volver a categorías</a></p>
 <p class="eyebrow">Edición {{ categoria.edicion.anio }} · {{ categoria.nombre }}</p>
-<h1>Votaciones</h1><p class="rule-note">Todos los subeventos de esta categoría comparten un único voto por usuario.</p>
+<h1>Votaciones</h1>
+<p><a href="{% url 'festival:resultados' %}?edicion={{ categoria.edicion_id }}&amp;categoria={{ categoria.pk }}">Ver resultados de esta categoría</a></p><p class="rule-note">Todos los subeventos de esta categoría comparten un único voto por usuario.</p>
 {% if categoria.habilitada %}<a class="btn btn-primary mb-4" href="{% url 'festival:elegir' categoria.edicion_id categoria.pk %}">Participar en esta categoría</a>{% else %}<p class="alert alert-warning">Categoría cerrada para votar.</p>{% endif %}
 <div class="row g-3">
 {% for votacion in votaciones %}

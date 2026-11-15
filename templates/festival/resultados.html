@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %}Resultados de votaciones | Vallenato{% endblock %}
+{% block page_class %}page-resultados{% endblock %}
+{% block content %}
+<p class="eyebrow">Consulta de participación acumulada</p>
+<h1>Resultados de las votaciones</h1>
+<p>Conteo de votos registrados por opción. Datos de un proyecto académico, sin carácter oficial.</p>
+<p class="rule-note">Las categorías abiertas muestran conteos provisionales. La consulta no declara ganadores y no modifica los votos. Recarga la página para actualizar.</p>
+{% if ediciones %}
+<form method="get" action="{% url 'festival:resultados' %}" class="mb-4">
+  <label for="edicion-resultados">Edición</label>
+  <select id="edicion-resultados" name="edicion" class="form-select mb-2">
+    {% for e in ediciones %}<option value="{{ e.pk }}" {% if e.pk == edicion.pk %}selected{% endif %}>{{ e.anio }} · {{ e.nombre }}</option>{% endfor %}
+  </select>
+  <button type="submit" class="btn btn-primary">Ver edición</button>
+</form>
+{% if categorias %}
+<form method="get" action="{% url 'festival:resultados' %}" class="mb-4">
+  <input type="hidden" name="edicion" value="{{ edicion.pk }}">
+  <label for="categoria-resultados">Categoría de la edición {{ edicion.anio }}</label>
+  <select id="categoria-resultados" name="categoria" class="form-select mb-2">
+    <option value="">Todas las categorías</option>
+    {% for c in categorias %}<option value="{{ c.pk }}" {% if c.pk == categoria_id %}selected{% endif %}>{{ c.nombre }}</option>{% endfor %}
+  </select>
+  <button type="submit" class="btn btn-outline-primary">Filtrar categoría</button>
+</form>
+{% endif %}
+<h2>Edición {{ edicion.anio }}</h2>
+<p><strong>Votos en las categorías mostradas: {{ total_votos }}</strong></p>
+<p>Este total cuenta votos, no personas únicas entre categorías.</p>
+{% for resumen in resumenes %}
+<section class="mb-4" aria-labelledby="titulo-categoria-{{ resumen.categoria.pk }}">
+  <h3 class="h4" id="titulo-categoria-{{ resumen.categoria.pk }}">{{ resumen.categoria.nombre }}</h3>
+  <p>{% if resumen.categoria.habilitada %}Abierta para votar · Conteo provisional{% else %}Cerrada para votar{% endif %} · Total de votos: {{ resumen.total }}</p>
+  {% if resumen.opciones %}
+  <div class="table-responsive" role="region" aria-label="Resultados de {{ resumen.categoria.nombre }}" tabindex="0">
+    <table class="table table-striped align-middle">
+      <caption>Votos por opción y subevento de {{ resumen.categoria.nombre }}. Ordenados de mayor a menor conteo; empates por nombre.</caption>
+      <thead><tr><th scope="col">Opción</th><th scope="col">Subevento</th><th scope="col" class="text-end">Votos</th></tr></thead>
+      <tbody>{% for opcion in resumen.opciones %}<tr><th scope="row">{{ opcion.nombre }}</th><td>{{ opcion.votacion.titulo }}</td><td class="text-end">{{ opcion.total_votos }}</td></tr>{% endfor %}</tbody>
+    </table>
+  </div>
+  {% if not resumen.total %}<p class="empty-state">Esta categoría todavía no tiene votos.</p>{% endif %}
+  {% else %}<p class="empty-state">Esta categoría todavía no tiene opciones.</p>{% endif %}
+  <a href="{% url 'festival:votaciones' edicion.pk resumen.categoria.pk %}">Consultar subeventos de esta categoría</a>
+</section>
+{% empty %}<p class="empty-state">Esta edición todavía no tiene categorías.</p>{% endfor %}
+{% else %}<p class="empty-state">Todavía no hay ediciones disponibles para consultar resultados.</p>{% endif %}
+{% endblock %}
